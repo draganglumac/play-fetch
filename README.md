@@ -1,9 +1,9 @@
 # play-fetch
-Simple Sinatra web server which allows the user to upload a piece of static content to a URL via a PUT request and retrieve it with a GET request.
+Simple *Sinatra* web server which allows the user to upload a piece of static content to a URL via a `PUT` request, and retrieve it with a `GET` request.
 
-URL does not neet to be preexisting, it will dynamically add it on the fly.
+URL does not neet to be preexisting, it gets dynamically added to the running server the first time you upload some content to that URL.
 
-Server supports ETag which is a SHA-1 hash of the static content at a URL, as well as conditional retrieval via ETag.
+Server supports `ETag` which is a *SHA-1 hash* of the static content at a URL, as well as conditional retrieval via `ETag`.
 
 - To start the server run
 
@@ -26,7 +26,7 @@ curl http://localhost/foo/bar/foobar.json
 # This returns a response with a content and an ETag header which contains <etag-value>
 ```
 
-or a conditional `GET` with `If-Match` or `If-None-Match` headers using an ETag value you obtain in the `ETag` header of PUT and GET responses.
+or a conditional `GET` with `If-Match` or `If-None-Match` headers using an ETag value you obtain in the `ETag` header of `PUT` and `GET` responses.
 
 ```sh
 curl -H "If-None-Match: <etag-value>" http://localhost/foo/bar/foobar.json
