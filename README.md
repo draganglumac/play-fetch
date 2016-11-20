@@ -9,7 +9,7 @@ Server supports `ETag` which is a *SHA-1 hash* of the static content at a URL, a
 
 ```sh
 cd <root-of-this-project>
-bundle exec ruby run.rb
+bundle exec ruby run.rb [-p PORT]
 ```
 Let's assume that the server is running on `http://localhost` base URL.
 
