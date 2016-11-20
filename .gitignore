@@ -1,2 +1,5 @@
 Gemfile.lock
+.idea
 
+resources/*
+!resources/index.html
