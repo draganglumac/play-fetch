@@ -8,8 +8,12 @@ get '/*' do
   relative_path = params['splat'].first
   relative_path = 'index.html' if relative_path.empty?
 
-  etag_for_file(relative_path)
-  response_from_file(relative_path)
+  begin
+    etag_for_file(relative_path)
+    response_from_file(relative_path)
+  rescue
+    404
+  end
 end
 
 put '/*' do
