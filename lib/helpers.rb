@@ -26,8 +26,9 @@ def save_request_to_file(request_body, relative_path)
 end
 
 def delete_file(relative_path)
-  if File::file?("#{settings.resources}/#{relative_path}")
-    FileUtils::remove_file(relative_path)
+  path = "#{settings.resources}/#{relative_path}"
+  if File::file?(path)
+    FileUtils::remove_file(path)
     true
   else
     false
