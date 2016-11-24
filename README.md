@@ -44,7 +44,7 @@ And to run the container you can do the following
 
 ```sh
 docker run --name my-sinatra-app \
-    -p 4567:4567 \
+    -p 80:80 \
     -v /path/to/sinatra/app:/usr/src/app \
     -e MAIN_APP_FILE=my-app.rb \
     -d name-of-your-image
