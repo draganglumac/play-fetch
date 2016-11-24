@@ -7,11 +7,14 @@ ENV RACK_ENV production
 ENV MAIN_APP_FILE run.rb
 
 RUN mkdir -p /usr/src/app
+RUN gem install sinatra --no-document
+RUN gem install shotgun --no-document
+RUN gem install rspec --no-document
 
 ADD startup.sh /
 
 WORKDIR /usr/src/app
 
-EXPOSE 4567
+EXPOSE 80
 
 CMD ["/bin/bash", "/startup.sh"]
