@@ -31,6 +31,25 @@ or a conditional `GET` with `If-Match` or `If-None-Match` headers using an ETag 
 ```sh
 curl -H "If-None-Match: <etag-value>" http://localhost/foo/bar/foobar.json
 ```
+## Docker
+
+You can build the *Docker* image from the `Dockerfile` by running
+
+```sh
+cd <root-of-your-project>
+docker build -t="name-of-your-image" .
+```
+
+And to run the container you can do the following
+
+```sh
+docker run --name my-sinatra-app \
+    -p 4567:4567 \
+    -v /path/to/sinatra/app:/usr/src/app \
+    -e MAIN_APP_FILE=my-app.rb \
+    -d name-of-your-image
+```
+
 And that's all there is to it.
 
 Enjoy!
