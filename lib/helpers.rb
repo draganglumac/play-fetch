@@ -24,3 +24,12 @@ def save_request_to_file(request_body, relative_path)
   request_body.rewind
   File.open(full_path, 'wb') { |f| f.write(request_body.read) }
 end
+
+def delete_file(relative_path)
+  if File::file?("#{settings.resources}/#{relative_path}")
+    FileUtils::remove_file(relative_path)
+    true
+  else
+    false
+  end  
+end

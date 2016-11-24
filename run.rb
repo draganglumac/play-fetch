@@ -27,3 +27,16 @@ put '/*' do
   etag_for_file(relative_path)
   201
 end
+
+delete '/*' do
+  relative_path = params['splat'].first
+  if relative_path.empty? or relative_path == 'index.html'
+    403
+  else
+    if delete_file(relative_path)
+      204
+    else
+      403
+    end
+  end
+end

@@ -31,6 +31,12 @@ or a conditional `GET` with `If-Match` or `If-None-Match` headers using an ETag 
 ```sh
 curl -H "If-None-Match: <etag-value>" http://localhost/foo/bar/foobar.json
 ```
+To remove a resource you've already uploaded use a `DELETE` request, for example
+
+```sh
+curl -X DELETE http://localhost/foo/bar/foobar.json
+```
+
 ## Docker
 
 You can build the *Docker* image from the `Dockerfile` by running
