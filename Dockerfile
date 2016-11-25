@@ -6,7 +6,9 @@ MAINTAINER Dragan Glumac "dragan.glumac@gmail.com"
 ENV RACK_ENV production
 ENV MAIN_APP_FILE run.rb
 
-RUN mkdir -p /usr/src/app
+RUN apk add --update git
+RUN mkdir -p /usr/src
+RUN git clone https://github.com/draganglumac/play-fetch.git /usr/src/app
 RUN gem install sinatra --no-document
 RUN gem install shotgun --no-document
 RUN gem install rspec --no-document
