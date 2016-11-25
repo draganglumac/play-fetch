@@ -1,5 +1,5 @@
 # Version 0.1
-FROM ruby:2.3
+FROM ruby:2.3-alpine
 
 MAINTAINER Dragan Glumac "dragan.glumac@gmail.com"
 
@@ -17,4 +17,4 @@ WORKDIR /usr/src/app
 
 EXPOSE 80
 
-CMD ["/bin/bash", "/startup.sh"]
+CMD ["/bin/sh", "/startup.sh"]
