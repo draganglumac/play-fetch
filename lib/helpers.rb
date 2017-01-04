@@ -40,3 +40,21 @@ def dir_path_and_file(relative_path)
   dir_path = parts[0..-2].inject(settings.resources) { |path, d| "#{path}/_#{d}" }
   [dir_path, parts[-1]]
 end
+
+def configured_paths(relative_path, index_path=nil)
+  paths = Dir.glob("#{relative_path}/**/*").inject([]) do |acc, path|
+    if File.file?(path)
+      acc << path
+    else
+      acc
+    end
+  end
+
+  paths.map do |path|
+    if index_path and path == index_path
+      '/index.html'
+    else
+      path.gsub(/#{relative_path}/, '').gsub('_', '')
+    end
+  end
+end

@@ -12,6 +12,12 @@
 
 <p>For more details go to <a href="https://github.com/draganglumac/play-fetch">https://github.com/draganglumac/play-fetch</a></p>
 
+<h2>Configured Paths</h2>
+<ul>
+  <% configured_paths('resources', 'resources/index.erb').each do |path| %>
+  <li><%= path %></li>
+  <% end %>
+</ul>
 </body>
 
 </html>
