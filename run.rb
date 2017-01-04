@@ -8,7 +8,8 @@ set :views, settings.resources
 
 get '/*' do
   relative_path = params['splat'].first
-  relative_path = 'index.erb' if relative_path.empty?
+  puts relative_path
+  relative_path = 'index.erb' if relative_path.empty? or relative_path == 'index.html'
 
   begin
     etag_for_file(relative_path)
