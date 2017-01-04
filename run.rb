@@ -26,7 +26,7 @@ end
 put '/*' do
   relative_path = params['splat'].first
   if relative_path.empty? or relative_path == 'index.html'
-    relative_path = '/index.erb'
+    relative_path = 'index.erb'
   else
     save_request_to_file(request.body, relative_path)
   end
