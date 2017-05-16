@@ -10,13 +10,14 @@ get '/*' do
   relative_path = params['splat'].first
   puts relative_path
   relative_path = 'index.erb' if relative_path.empty? or relative_path == 'index.html'
-
+  relative_path = backup if relative_path == 'backup'
+  
   begin
     etag_for_file(relative_path)
     if relative_path == 'index.erb'
       erb :index
     else
-      response_from_file(relative_path)
+      response_from_file(relative_path, response)
     end
   rescue
     404

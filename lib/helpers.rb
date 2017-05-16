@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'digest/sha1'
 require 'fileutils'
+require 'date'
 
 def etag_for_file(relative_path)
   dir_path, file = dir_path_and_file(relative_path)
@@ -9,9 +10,12 @@ def etag_for_file(relative_path)
   etag(Digest::SHA1.hexdigest contents) unless contents.nil? or contents.empty?
 end
 
-def response_from_file(relative_path)
+def response_from_file(relative_path, response)
   dir_path, file = dir_path_and_file(relative_path)
   full_path = "#{dir_path}/#{file}"
+  if file =~ /.*\.tar\.gz/
+    response.headers['Content-Disposition'] = "attachment; filename=\"#{file}\""
+  end
   send_file(full_path)
 end
 
@@ -57,4 +61,12 @@ def configured_paths(relative_path, index_path=nil)
       path.gsub(/#{relative_path}/, '').gsub('_', '')
     end
   end
+end
+
+def backup
+  today = Date.today.strftime('%Y%m%d')
+  `rm resources/*.tar.gz`
+  `tar cvf "resources/#{today}.tar" resources`
+  `gzip "resources/#{today}.tar"`
+  "#{today}.tar.gz"
 end
