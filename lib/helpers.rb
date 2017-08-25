@@ -58,7 +58,7 @@ def configured_paths(relative_path, index_path=nil)
     if index_path and path == index_path
       '/index.html'
     else
-      path.gsub(/#{relative_path}/, '').gsub('_', '')
+      path.gsub('/_', '/').gsub(/#{relative_path}/, '')
     end
   end
 end
